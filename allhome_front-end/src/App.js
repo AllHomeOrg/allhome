@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import ProductPages from './components/ProductPages';
+import ViewCart from './components/ViewCart';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [itemQty, setItemQty] = useState([]);
   const [showNavigation, setShowNavigation] = useState(true);
 
@@ -121,13 +123,40 @@ function App() {
     .catch(error => console.error('Error:', error));
   }
 
+  // removes item from cart
+  async function removeFromCart(cartItemId) {
+    await fetch(`http://127.0.0.1:8000/api/cart/item/${cartItemId}/remove`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error sending data');
+      }
+
+      return response.json();
+    })
+    .then(data => {
+      if (data.status === 200) {
+        console.log(data.message);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
   return (
     <BrowserRouter>
       <div>
         {showNavigation && <Navigation />}
         <Routes>
           <Route exact path='/' element={<Home initNewCart={initNewCart} />} />
-          <Route path='/my-cart'/>
+          <Route path='/my-cart'
+                element={<ViewCart cartItems={cartItems} 
+                setCartItems={setCartItems} 
+                products={products}
+                onRemoveFromCart={removeFromCart}
+                setShowNavigation={setShowNavigation} />} 
+          />
           <Route path='/product-pages'
                 element={<ProductPages products={products}
                 setCarts={addToCart}
