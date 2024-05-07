@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import ProductPages from './components/ProductPages';
 import ViewCart from './components/ViewCart';
+import ShippingDetails from './components/ShippingDetails';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -161,6 +163,10 @@ function App() {
                 element={<ProductPages products={products}
                 setCarts={addToCart}
                 setShowNavigation={setShowNavigation} />}
+          />
+          <Route
+            path={'/shipping_details'}
+            element={<ShippingDetails setShowNavigation={setShowNavigation} />}
           />
         </Routes>
       </div>
