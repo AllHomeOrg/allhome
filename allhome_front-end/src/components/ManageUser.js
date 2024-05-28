@@ -154,47 +154,75 @@ function ManageUser() {
     }
 
     return (
-        <div>
+        <div className='container'>
             <AdminPanelNavigation />
-            <h1>Manage User</h1>
+            <h1 className='lbl'>Manage User</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    value={userData.username}
-                    onChange={handleInputChange}
-                    placeholder="Username"
-                    required
-                />
-                <input
-                    ref={inputPassRef}
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={userData.password}
-                    onChange={handleInputChange}
-                    placeholder="Password"
-                    required
-                />
-                <button onClick={handleClickChangeType}>{showPassword ? 'Hide Password' : 'Show Password'}</button>
-                <button type="submit">{editingUserId ? 'Update User' : 'Add User'}</button>
-                {editingUserId && <button onClick={handleCancel}>Cancel</button>}
+                <div className="row g-3">
+                 <div className = "col-sm-4">
+                    <input
+                      class="form-control"
+                        type="text"
+                        name="username"
+                        value={userData.username}
+                        onChange={handleInputChange}
+                        placeholder="Username"
+                        required
+                    />
+                </div>
+                <div className = "col-sm-3">
+                    <input
+                      class="form-control"
+                        ref={inputPassRef}
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={userData.password}
+                        onChange={handleInputChange}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <div className="col-sm-2">
+                    <button class="form-control btn btn-primary" onClick={handleClickChangeType}>{showPassword ? 'Hide Password' : 'Show Password'}</button>
+                </div>
+                <div className="col-sm-2">
+                    <button class="form-control add-update" type="submit">{editingUserId ? 'Update User' : 'Add User'}</button>
+                </div>
+                <div className="col-sm-1"> 
+                    {editingUserId && 
+                    <button class="form-control btn btn-danger" onClick={handleCancel}>Cancel</button>}
+                </div>
+                </div>
             </form>
             <br/>
-            <ul>
+            <table className='table'>
+            <thead>
+                <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+                <tbody>
                 {userList && userList.map((user) => {
                     if (user && user.username !== currAdminSession.username && user.username !== mainAdmin?.username) {
                         return (
-                            <li key={user.userId}>
-                                {user.username} - {user.password}
-                                <button onClick={() => handleEdit(user)}>Edit</button>
-                                <button onClick={() => handleDelete(user.userId)}>Delete</button>
-                            </li>
+                            
+                                <tr key={user.userId}>
+                                     <td>{user.username} </td>
+                                     <td>{user.password} </td>
+                                    <td><button className = "btn btn-primary editbtn" onClick={() => handleEdit(user)}>Edit</button> </td>
+                                   <td> <button className="btn btn-danger" onClick={() => handleDelete(user.userId)}>Delete</button></td>
+                                </tr>
+                             
                         );
                     }
 
                     return null;
                 })}
-            </ul>
+            </tbody>
+        </table>
         </div>
     );
 };

@@ -109,45 +109,69 @@ function ManageProduct({ products, fetchProductList }) {
     return (
         <div>
             <AdminPanelNavigation />
-            <h1>Manage Product</h1>
+            <div className='container'>
+            <h1 className='lbl'>Manage Product</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    value={productData.name}
-                    onChange={handleInputChange}
-                    placeholder="Product Name"
-                    required
-                />
-                <input
-                    type="text"
-                    name="description"
-                    value={productData.description}
-                    onChange={handleInputChange}
-                    placeholder="Product Description"
-                    required
-                />
-                <input
-                    type="number"
-                    name="price"
-                    value={productData.price}
-                    onChange={handleInputChange}
-                    placeholder="Product Price"
-                    required
-                />
-                <button type="submit">{editingProductId ? 'Update Product' : 'Add Product'}</button>
-                {editingProductId && <button type="button" onClick={handleCancel}>Cancel</button>}
+                <div className="row g-3">
+                    <div className = "col-sm-3">
+                        <input
+                        class="form-control"
+                            type="text"
+                            name="name"
+                            value={productData.name}
+                            onChange={handleInputChange}
+                            placeholder="Product Name"
+                            required
+                        />
+                    </div>
+                    <div className = "col-sm-4">
+                        <input
+                        class="form-control"
+                            type="text"
+                            name="description"
+                            value={productData.description}
+                            onChange={handleInputChange}
+                            placeholder="Product Description"
+                            required
+                        />
+                    </div>
+                    <div className = "col-sm-2">
+                        <input
+                            class="form-control"
+                            type="number"
+                            name="price"
+                            value={productData.price}
+                            onChange={handleInputChange}
+                            placeholder="Product Price"
+                            required
+                         />
+                    </div>
+                    <div className = "col-sm-2">
+                        <button class="form-control add-update"  type="submit">{editingProductId ? 'Update Product' : 'Add Product'}
+                    </button>
+                    </div>
+                    
+                    <div className = "col-sm-1">
+                        {editingProductId && 
+                        <button class="form-control btn btn-danger"  type="button" onClick={handleCancel}>Cancel</button>}
+                    </div>
+                </div>
             </form>
             <br />
-            <ul>
+            <table className='table'>
+                <tbody>
                 {products.map((product) => (
-                    <li key={product.product_id}>
-                        {product.product_name} - {product.product_description} - {product.product_price.toFixed(2)}PHP
-                        <button onClick={() => handleEdit(product)}>Edit</button>
-                        <button onClick={() => handleDelete(product.product_id)}>Delete</button>
-                    </li>
+                    <tr key={product.product_id}>
+                        <td>{product.product_name} </td>
+                        <td>{product.product_description} </td>
+                        <td>PHP {product.product_price.toFixed(2)}</td>
+                        <td><button className='btn editbtn'onClick={() => handleEdit(product)}>Edit</button></td>
+                        <td><button className='btn btn-danger' onClick={() => handleDelete(product.product_id)}>Delete</button></td>
+                    </tr>
                 ))}
-            </ul>
+                </tbody>
+            </table>
+            </div>
         </div>
     );
 };

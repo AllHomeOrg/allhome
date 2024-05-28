@@ -22,7 +22,7 @@ function AdminPanel() {
         <div>
             <AdminPanelNavigation />
             {currAdminSession && (
-                <h1>Welcome {currAdminSession.username}!</h1>
+                <h1 className="lbl text-center">Welcome {currAdminSession.username}!</h1>
             )}
         </div>
     );

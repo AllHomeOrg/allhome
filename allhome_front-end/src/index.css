@@ -214,3 +214,80 @@
 .h1{
   margin-bottom: 500px;
 }
+
+
+
+.login-con{
+  margin-top: 100px;
+ 
+}
+
+#login-btn{
+  margin-top: 20px;
+  border-color: #EA4E4E !important;
+  background-color: #fff !important;
+  color: #b3171e !important;
+ 
+}
+
+#login-btn:hover{
+  background-color: #EA4E4E!important;
+  border-color: #EA4E4E !important;
+  color: white !important
+  
+}
+
+#logout{
+  align-items: end;
+  background-color: #EA4E4E!important;
+  border-color: #fff !important;
+  padding: 10px !important;
+  
+}
+
+#logout:hover{
+  background-color: #fff !important;
+  color: #b3171e;
+ 
+}
+
+.nav.nav-underline {
+  flex-grow: 1;
+}
+
+.right-align {
+  margin-left: auto;
+}
+
+.lbl{
+  margin-top: 100px;
+  color: #9d9d9d;
+  margin-bottom: 50px;
+}
+
+.editbtn{
+  width: 75px;
+  background-color: #d6c016 !important;
+  border-color: #d6c016!important;
+  color: white !important;
+}
+
+.editbtn:hover{
+  background-color: #cbb619 !important;
+  border-color: #cbb619!important;
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; 
+}
+
+.add-update{
+  background-color: rgb(41, 163, 41) !important;
+  color: white !important;
+  font-weight: 600!important;
+}
+.add-update:hover{
+  background-color: rgb(46, 125, 46) !important;
+  color: white !important;
+  font-weight: 600!important;
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; 
+}

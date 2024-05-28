@@ -59,35 +59,40 @@ function AdminLogin() {
     }
 
     return (
-        <div>
+        <div className=" d-flex justify-content-center ">
+            <div className="login-con"> 
             {isAlreadyInSession() ? navigate('/admin/panel') : (
                 <>
-                    <h2>Admin Login</h2>
+                    <h2 class="h2log text-center lbl">Admin Login</h2>
                     <form onSubmit={handleSubmit}>
-                        <div>
-                            <label htmlFor="username">Username:</label>
-                            <input 
+                        <div className="mb-3">
+                            <label htmlFor="username" for="exampleFormControlInput1" className="form-label">Username:</label>
+                            <input
+                                className="form-control" 
+                                 id="exampleFormControlInput1"
                                 type="text" 
-                                id="username" 
+                                
                                 name="username" 
                                 onChange={handleInputChange}
                                 required />
                         </div>
                         <div>
-                            <label htmlFor="password">Password:</label>
+                            <label for="inputPassword3" class="col-sm-2 col-form-label" htmlFor="password">Password:</label>
                             <input 
+                                class="form-control"
                                 type="password" 
-                                id="password" 
+                                id="inputPassword3" 
                                 name="password" 
                                 onChange={handleInputChange}
                                 required />
                         </div>
-                        <div>
-                            <button type="submit">Login</button>
+                        <div className="d-grid gap-2">
+                            <button id="login-btn" className="btn btn-primary" type="submit">Login</button>
                         </div>
                     </form>
                 </>
             )}
+            </div>
         </div>
     );
 }

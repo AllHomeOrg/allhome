@@ -14,19 +14,19 @@ function AdminPanelNavigation() {
     }
 
     return(
-        <nav>
-            <div>
-                <ul>
-                    <li>
-                        <Link to={'/admin/panel'}>Home</Link>
+        <nav className="navbar fixed-top">
+            <div className="container-fluid" >
+                <ul className="nav nav-underline"> 
+                    <li className="nav-item">
+                        <Link to={'/admin/panel'} className="nav-link">Home</Link>
                     </li>   
-                    <li>
-                        <Link to={'/admin/panel/manage_user'}>Manage User</Link>
-                    </li>
-                    <li>
-                        <Link to={'/admin/panel/manage_product'}>Manage Product</Link>
+                    <li className="nav-item">
+                        <Link to={'/admin/panel/manage_user'} className="nav-link">Manage User</Link>
+                    </li >
+                    <li className="nav-item">
+                        <Link to={'/admin/panel/manage_product'} className="nav-link">Manage Product</Link>
                     </li> 
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={handleLogout} className='btn btn-primary right-align' id ="logout">Logout</button>
                 </ul>
             </div>
         </nav>
