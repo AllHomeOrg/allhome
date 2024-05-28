@@ -14,6 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Create predefined user
+        User::create([
+            'userId' => 1,
+            'username' => 'admin',
+            'password' => 'admin123'
+        ]);
+
         Product::factory()->create([
             'product_id' => 1,
             'product_name' => 'Luxe Lounge Sofa',
